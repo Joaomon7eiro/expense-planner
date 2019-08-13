@@ -1,4 +1,10 @@
+import 'package:expense_planner/widgets/new_transaction.dart';
+import 'package:expense_planner/widgets/user_transaction.dart';
+
+import './widgets/transactions_list.dart';
 import 'package:flutter/material.dart';
+
+import 'package:expense_planner/models/transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,19 +19,26 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(''),
       ),
-      body: Center(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Container(
+            child: Card(
+              color: Colors.blue,
+              child: Text('Gráfico'),
+              elevation: 5,
+            ),
+          ),
+          UserTransaction(),
+        ],
+      ),
     );
   }
 }
