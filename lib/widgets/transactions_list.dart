@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
-  final List<Transaction> _transactions;
+  final List<Transaction> transactions;
   final Function deleteTransaction;
 
-  TransactionList(this._transactions, this.deleteTransaction);
+  TransactionList(this.transactions, this.deleteTransaction);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        child: _transactions.isEmpty
+        child: transactions.isEmpty
             ? Column(
                 children: <Widget>[
                   Text(
@@ -48,29 +48,29 @@ class TransactionList extends StatelessWidget {
                           padding: const EdgeInsets.all(6.0),
                           child: FittedBox(
                             child: Text(
-                              'R\$${_transactions[index].amount.toStringAsFixed(2)}',
+                              'R\$${transactions[index].amount.toStringAsFixed(2)}',
                             ),
                           ),
                         ),
                       ),
                       title: Text(
-                        '${_transactions[index].title}',
+                        '${transactions[index].title}',
                         style: Theme.of(context).textTheme.title,
                       ),
                       subtitle: Text(
                         formatDate(
-                            _transactions[index].date, [d, '/', m, '/', yyyy]),
+                            transactions[index].date, [d, '/', m, '/', yyyy]),
                       ),
                       trailing: IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () =>
-                            deleteTransaction(_transactions[index].id),
+                            deleteTransaction(transactions[index].id),
                         color: Theme.of(context).errorColor,
                       ),
                     ),
                   );
                 },
-                itemCount: _transactions.length,
+                itemCount: transactions.length,
               ),
       ),
     );

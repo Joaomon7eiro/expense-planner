@@ -46,6 +46,7 @@ class _NewTransactionState extends State<NewTransaction> {
     if (_chosenDate == null) {
       _chosenDate = DateTime.now();
     }
+
     widget.addNewTransaction(title, amount, _chosenDate);
 
     Navigator.of(context).pop();
