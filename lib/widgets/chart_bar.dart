@@ -11,18 +11,38 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text('R\$${totalSpending.toStringAsFixed(0)}'),
+        Container(
+          height: 20,
+          child: FittedBox(
+            child: Text(
+              'R\$${totalSpending.toStringAsFixed(0)}',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
         Container(
           height: 60,
+          width: 10,
           child: Stack(
             children: <Widget>[
               Container(
-                color: Colors.grey,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  border: Border.all(color: Colors.grey.shade400, width: 1),
+                ),
               ),
               FractionallySizedBox(
                 heightFactor: spendingPercent,
                 child: Container(
-                  color: Colors.amber,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
                 ),
               )
             ],

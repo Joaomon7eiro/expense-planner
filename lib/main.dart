@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'OpenSans',
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
+              button: TextStyle(color: Colors.white),
             ),
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
@@ -42,56 +43,80 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [];
-//  final List<Transaction> _transactions = [
-//    Transaction(
-//      id: '1',
-//      title: 'Tênis',
-//      amount: 30.99,
-//      date: DateTime.now(),
-//    ),
-//    Transaction(
-//      id: '2',
-//      title: 'Padaria',
-//      amount: 16.64,
-//      date: DateTime.now(),
-//    ),
-//    Transaction(
-//      id: '1',
-//      title: 'Tênis',
-//      amount: 30.99,
-//      date: DateTime.now(),
-//    ),
-//    Transaction(
-//      id: '1',
-//      title: 'Tênis',
-//      amount: 30.99,
-//      date: DateTime.now(),
-//    ),
-//    Transaction(
-//      id: '1',
-//      title: 'Tênis',
-//      amount: 30.99,
-//      date: DateTime.now(),
-//    ),
-//    Transaction(
-//      id: '1',
-//      title: 'Tênis',
-//      amount: 30.99,
-//      date: DateTime.now(),
-//    ),
-//  ];
+  // final List<Transaction> _transactions = [];
+  final List<Transaction> _transactions = [
+    Transaction(
+      id: '1',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '2',
+      title: 'Padaria',
+      amount: 16.64,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '3',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '4',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '5',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '6',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '7',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '8',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '9',
+      title: 'Tênis',
+      amount: 30.99,
+      date: DateTime.now(),
+    ),
+  ];
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime dateTime) {
     final newTransaction = Transaction(
       title: txTitle,
       amount: txAmount,
       id: DateTime.now().toString(),
-      date: DateTime.now(),
+      date: dateTime,
     );
 
     setState(() {
       _transactions.add(newTransaction);
+    });
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((tx) => tx.id == id);
     });
   }
 
@@ -129,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Chart(_recentTransactions),
-          TransactionList(_transactions),
+          TransactionList(_transactions, _deleteTransaction),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
