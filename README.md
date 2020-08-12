@@ -1,7 +1,6 @@
 # expense_planner
 
-A new Flutter application.
-
+A new Flutter application
 ## Getting Started
 
 This project is a starting point for a Flutter application.
